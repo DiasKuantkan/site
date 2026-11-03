@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHSTORE — Магазин техники</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: #0b1020;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #11182b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #38bdf8;
+        }
+        .hero {
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #101b38, #075985);
+        }
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: #38bdf8;
+            color: #07111f;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #0ea5e9;
+        }
+        .products {
+            padding: 70px 8%;
+        }
+        .products h2 {
+            font-size: 35px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: #151f35;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px #0005;
+        }
+        .product-image {
+            font-size: 85px;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            margin-bottom: 12px;
+        }
+        .price {
+            color: #38bdf8;
+            font-size: 23px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .card button {
+            width: 100%;
+        }
+        .about {
+            background: #11182b;
+            text-align: center;
+            padding: 70px 10%;
+        }
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .about p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #94a3b8;
+            background: #080d19;
+        }
+        #cart {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+        @media(max-width: 650px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">TECHSTORE</div>
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#products">Товары</a>
+        <a href="#about">О нас</a>
+        <span id="cart">🛒 Корзина: 0</span>
+    </nav>
+</header>
+<section class="hero" id="home">
+    <h1>Технологии будущего</h1>
+    <p>Лучшая электроника по доступным ценам</p>
+    <a href="#products" class="btn">Смотреть товары</a>
+</section>
+<section class="products" id="products">
+    <h2>Наши товары</h2>
+    <div class="product-container">
+        <div class="card">
+            <div class="product-image">💻</div>
+            <h3>Ноутбук ASUS</h3>
+            <p>Мощный ноутбук для работы и игр</p>
+            <div class="price">350 000 ₸</div>
+            <button class="btn" onclick="addToCart()">Купить</button>
+        </div>
+        <div class="card">
+            <div class="product-image">📱</div>
+            <h3>iPhone 16</h3>
+            <p>Современный смартфон Apple</p>
+            <div class="price">420 000 ₸</div>
+            <button class="btn" onclick="addToCart()">Купить</button>
+        </div>
+        <div class="card">
+            <div class="product-image">🎧</div>
+            <h3>Наушники Sony</h3>
+            <p>Качественный звук и комфорт</p>
+            <div class="price">65 000 ₸</div>
+            <button class="btn" onclick="addToCart()">Купить</button>
+        </div>
+        <div class="card">
+            <div class="product-image">⌚</div>
+            <h3>Apple Watch</h3>
+            <p>Умные часы на каждый день</p>
+            <div class="price">120 000 ₸</div>
+            <button class="btn" onclick="addToCart()">Купить</button>
+        </div>
+    </div>
+</section>
+<section class="about" id="about">
+    <h2>О нашем магазине</h2>
+    <p>
+        TECHSTORE — современный интернет-магазин электроники.
+        Мы предлагаем качественные товары, доступные цены
+        и удобный сервис для каждого покупателя.
+    </p>
+</section>
+<footer>
+    <p>© 2026 TECHSTORE. Все права защищены.</p>
+</footer>
+<script>
+    let cartCount = 0;
+    function addToCart() {
+        cartCount++;
+        document.getElementById("cart").innerHTML =
+            "🛒 Корзина: " + cartCount;
+        alert("Товар добавлен в корзину!");
+    }
+</script>
+</body>
+</html>
